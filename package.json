@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-filechooser",
-  "version": "1.2.0",
+  "version": "1.2.1-dev",
   "description": "Cordova FileChooser Plugin",
   "main": "index.js",
   "scripts": {
@@ -8,19 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ihadeed/cordova-filechooser.git"
+    "url": "git+https://github.com/ChezRD/cordova-filechooser.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ihadeed/cordova-filechooser/issues"
+    "url": "https://github.com/ChezRD/cordova-filechooser/issues"
   },
-  "homepage": "https://github.com/ihadeed/cordova-filechooser#readme",
+  "homepage": "https://github.com/ChezRD/cordova-filechooser#readme",
   "cordova": {
     "id": "cordova-plugin-filechooser",
     "platforms": [
-      "android",
-      "windows"
+      "android"
     ]
   }
 }

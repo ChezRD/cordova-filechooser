@@ -19,6 +19,8 @@ public class FileChooser extends CordovaPlugin {
     private static final int PICK_FILE_REQUEST = 1;
 
     public static final String MIME = "mime";
+    public static final String EXTRA_MIME = "extra_mime";
+    public static final String PICKER_TITLE = "picker_title";
 
     CallbackContext callback;
 
@@ -36,6 +38,8 @@ public class FileChooser extends CordovaPlugin {
 
     public void chooseFile(JSONObject filter, CallbackContext callbackContext) {
         String uri_filter = filter.has(MIME) ? filter.optString(MIME) : "*/*";
+        String additional_uri_filter = filter.has(EXTRA_MIME) ? filter.optString(EXTRA_MIME) : "";
+        String select_title = filter.has(PICKER_TITLE) ? filter.optString(PICKER_TITLE) : "Select File";
 
         // type and title should be configurable
 
@@ -43,8 +47,11 @@ public class FileChooser extends CordovaPlugin {
         intent.setType(uri_filter);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+        if (additional_uri_filter.length() > 0) {
+            intent.putExtra(Intent.EXTRA_MIME_TYPES, additional_uri_filter);
+        }
 
-        Intent chooser = Intent.createChooser(intent, "Select File");
+        Intent chooser = Intent.createChooser(intent, select_title);
         cordova.startActivityForResult(this, chooser, PICK_FILE_REQUEST);
 
         PluginResult pluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
